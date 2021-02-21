@@ -25,12 +25,13 @@ public class LibraryController {
     }
 
     @GetMapping("/library")
-    public Library getLibrary(@RequestParam("bookId") Long bookId, @RequestParam("authorId") Long authorId) {
+    public Library getLibrary(@RequestParam("bookId") Long bookId, @RequestParam("authorId") Long authorId, @RequestParam("libraryName") String libraryName) {
 
         Book book = restTemplate.getForObject("http://Book-Service/api/books/find/" + bookId, Book.class);
         Author author = restTemplate.getForObject("http://Author-Service/api/authors/find/" + authorId, Author.class);
 
         return Library.builder()
+                .libraryName(libraryName)
                 .book(book)
                 .author(author)
                 .build();

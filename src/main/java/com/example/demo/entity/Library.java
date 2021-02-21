@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Library implements Serializable {
 
+    private String libraryName;
     private Book book;
     private Author author;
 }
